@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <slider v-bind="setting" />
+  <div class="mx-auto mt-6">
+    <slider class="justify-center" v-bind="setting" />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   data: function() {
     return {
       setting: {
+        width: "500",
         image: ["diamond.jpg", "sapphire.jpg", "pearl.jpg"],
         autoRoll: false
       }
