@@ -24,11 +24,13 @@
 }
 .about{
   font-family: "Tangerine";
+  color: white;
+  -webkit-text-stroke: 1px black;
   margin-top: 5ex; 
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
+  font-size: 48px;
   background-image: url(../assets/aboutimg.jpg);
   background-repeat: no-repeat;
   background-position: center;
