@@ -31,6 +31,7 @@
   font-size: 36px;
   background-image: url(../assets/aboutimg.jpg);
   background-repeat: no-repeat;
-
+  background-position: center;
+  background-size: auto;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-auto mt-6">
-    <slider class="justify-center" v-bind="setting" />
+  <div class="mx-auto mt-6 justify-center flex">
+    <slider v-bind="setting" />
   </div>
 </template>
 
