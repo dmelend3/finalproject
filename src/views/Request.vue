@@ -4,7 +4,12 @@
         <div class="stones">
         <h3 class="text-2xl text-center">Stones</h3>
         <ul id="stonesList">
-            <li @click="moveToChosen(stones, index)" class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Diamond</li>
+            <li v-for="(stones, index) in stonesList" :key="index"
+            @click="moveToChosen(stones, index)"
+            class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">
+            {{stones}}
+            </li>
+            <li @click="moveToChosen(item, index)" class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Diamond</li>
             <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Emerald</li>
             <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Sapphire</li>
             <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Ruby</li>
@@ -60,10 +65,13 @@
             }
         },
         methods: {
-            moveToChosen(options, index) {
-                this.chosenList.push(options);
+            moveToChosen(stones, index) {
+                this.chosenList.push(stones);
                 this.stoneslist.splice(index, 1);
-            }
+            }, /*
+            stoneslist.addEventListener("click", event => {
+                move(event.target, chosenList, "chosen")
+            })*/
         },
 }
 </script>
@@ -77,4 +85,3 @@
 ul{
     display: table-cell;
 }
-</style>
