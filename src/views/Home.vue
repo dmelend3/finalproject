@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="w-33%" :style="`background-image:url(${diamond2}) `">
-    <h3>View our products</h3>
+    <h10>View our products</h10>
   </div>
 </div>
 </template>

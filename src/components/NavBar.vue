@@ -9,15 +9,15 @@
 
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
-      <a href="/products" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-'#FBC02D' mr-4">
-        Products
-      </a>
-      <a href="/about" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green mr-4">
+      <router-link v-if="user" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-'#FBC02D' mr-4" to="/request">
+        Request a quote
+      </router-link>
+      <router-link class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green mr-4" to="/about">
         About
-      </a>
-      <a href="/stores" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white">
+      </router-link>
+      <router-link class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white" to="/stores">
         Stores
-      </a>
+      </router-link>
     </div>
     <div>
       <router-link 

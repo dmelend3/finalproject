@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Login from "../views/Login.vue";
 import Stores from "../views/Stores.vue";
-import Products from "../views/Products.vue";
+import Request from "../views/Request.vue";
 
 Vue.use(VueRouter);
 
@@ -30,9 +30,9 @@ const routes = [
     component: Stores
   },
   {
-    path: "/products",
-    name: "Products",
-    component: Products
+    path: "/request",
+    name: "Request",
+    component: Request
   }
 ];
 const router = new VueRouter({
