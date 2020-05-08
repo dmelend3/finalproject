@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="container">
+    <div class="options">
         <div class="stones">
         <h3 class="text-2xl text-center">Stones</h3>
         <ul id="stonesList">
@@ -34,7 +34,7 @@
         </ul>
         </div>
     </div>
-    <div class="chosen">
+    <div class="chosen" v-if="totalChosen>0">
         <h3 class="text-2xl text-center">Chosen options:</h3>
         <ul id="chosenList">
             <li v-for="(chosen, index) in chosenList" :key="index"
@@ -60,8 +60,8 @@
             }
         },
         methods: {
-            moveToChosen(stones, index) {
-                this.chosenList.push(stones);
+            moveToChosen(options, index) {
+                this.chosenList.push(options);
                 this.stoneslist.splice(index, 1);
             }
         },
