@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="options">
+    <div>
         <div class="stones" v-if="totalStones>3">
         <h3 class="text-2xl text-center">Stones</h3>
         <ul>
@@ -12,7 +12,7 @@
         </ul>
         </div>
         <div class="accessory" v-if="totalAccessories>3">
-        <h3 class="text-2xl text-center">Accessory</h3>
+        <h3 class="text-2xl text-center">Accessories</h3>
         <ul>
             <li v-for="(accessories, index) in accessoryList" :key="index"
             @click="moveToChosen2(accessories, index)"
@@ -22,7 +22,7 @@
         </ul>
         </div>
         <div class="cut" v-if="totalCuts>8">
-        <h3 class="text-2xl text-center">Cut</h3>
+        <h3 class="text-2xl text-center">Cuts</h3>
         <ul>
             <li v-for="(cuts, index) in cutList" :key="index"
             @click="moveToChosen3(cuts, index)"
@@ -40,7 +40,10 @@
             {{chose}}
             </li>
         </ul>
-        <router-link class="justify-center items-center flex bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" to="/login">Submit</router-link>
+    </div>
+    <div style="padding-top:20px; text-align:center">
+        <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="$router.go(0)" v-on:click="say('Your request has been submitted!')">Submit</button>
+        <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="$router.go(0)">Start Over</button>
     </div>
     </div>
 </template>
@@ -104,16 +107,9 @@
                 this.chosenList.push(cut);
                 this.cutList.splice(index, 1);
             },
-        },
+            say: function (message) {
+              alert(message)
+            }
+        }
 }
 </script>
-
-<style lang="scss" scoped>
-.container{
-    display: table;
-    table-layout: fixed;
-    margin-top: 10px;
-}
-ul{
-    display: table-cell;
-}
