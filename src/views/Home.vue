@@ -7,8 +7,8 @@
   </div>
   <div class="w-33%" :style="`background-image:url(${diamond2}) `">
   </div>
-    <h1 class="my-4">Sign up to request a quote today!</h1>
-    <router-link class="ml-16 bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" to="/login">Sign up</router-link>
+    <h1 class="my-4 flex justify-center items-center text-2xl">Sign up to request a quote today!</h1>
+    <router-link class="justify-center items-center flex bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" to="/login">Sign up</router-link>
 </div>
 </template>
 

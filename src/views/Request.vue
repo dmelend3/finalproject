@@ -1,41 +1,34 @@
 <template>
 <div>
     <div class="options">
-        <div class="stones">
+        <div class="stones" v-if="totalStones>3">
         <h3 class="text-2xl text-center">Stones</h3>
-        <ul id="stonesList">
-            <li v-for="(stone, index) in stonesList" :key="index"
-            @click="moveToChosen(stone, index)"
+        <ul>
+            <li v-for="(stones, index) in stonesList" :key="index"
+            @click="moveToChosen(stones, index)"
             class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">
             {{stones}}
             </li>
-            <li @click="moveToChosen(item, index)" class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Diamond</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Emerald</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Sapphire</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Ruby</li>
         </ul>
         </div>
-        <div>
+        <div class="accessory" v-if="totalAccessories>3">
         <h3 class="text-2xl text-center">Accessory</h3>
-        <ul id="accessoryList">
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Ring</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Earring</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Bracelet</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Necklace</li>
+        <ul>
+            <li v-for="(accessories, index) in accessoryList" :key="index"
+            @click="moveToChosen2(accessories, index)"
+            class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">
+            {{accessories}}
+            </li>
         </ul>
         </div>
-        <div>
+        <div class="cut" v-if="totalCuts>8">
         <h3 class="text-2xl text-center">Cut</h3>
-        <ul id="cutList">
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Round Brilliant Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Princess Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Marquise Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Cushion Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Emerald Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Radiant Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Pear Shaped</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Oval Cut</li>
-            <li class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">Asscher Cut</li>
+        <ul>
+            <li v-for="(cuts, index) in cutList" :key="index"
+            @click="moveToChosen3(cuts, index)"
+            class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">
+            {{cuts}}
+            </li>
         </ul>
         </div>
     </div>
@@ -47,6 +40,7 @@
             {{chose}}
             </li>
         </ul>
+        <router-link class="justify-center items-center flex bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" to="/login">Submit</router-link>
     </div>
     </div>
 </template>
@@ -56,22 +50,60 @@
         name: "Request",
         data() {
             return {
-                chosenList: []
+                option: "",
+                stones: "",
+                chosenList: [],
+                stonesList: [
+                "Diamond",
+                "Ruby",
+                "Sapphire",
+                "Emerald"],
+                accessoryList: [
+                  "Ring",
+                  "Earring",
+                  "Bracelet",
+                  "Necklace"
+                ],
+                cutList: [
+                  "Round Brilliant Cut",
+                  "Princess Cut",
+                  "Marquise Cut",
+                  "Cushion Cut",
+                  "Emerald Cut",
+                  "Radiant Cut",
+                  "Pear Shaped",
+                  "Oval Cut",
+                  "Asscher Cut"
+                ]
             }
         },
         computed: {
             totalChosen() {
                 return this.chosenList.length; 
-            }
+            },
+            totalStones() {
+              return this.stonesList.length;
+            },
+            totalAccessories() {
+              return this.accessoryList.length;
+            },
+            totalCuts() {
+              return this.cutList.length;
+            },
         },
         methods: {
             moveToChosen(stones, index) {
                 this.chosenList.push(stones);
-                this.stoneslist.splice(index, 1);
-            }, /*
-            stoneslist.addEventListener("click", event => {
-                move(event.target, chosenList, "chosen")
-            })*/
+                this.stonesList.splice(index, 1);
+            },
+            moveToChosen2(accessory, index) {
+                this.chosenList.push(accessory);
+                this.accessoryList.splice(index, 1);
+            },
+            moveToChosen3(cut, index) {
+                this.chosenList.push(cut);
+                this.cutList.splice(index, 1);
+            },
         },
 }
 </script>
