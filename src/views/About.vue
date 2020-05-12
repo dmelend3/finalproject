@@ -2,12 +2,16 @@
 <div>
   <div class="wel">WELCOME</div>
   <div class="about">Here at Mel's Designs, we strive to find the perfect product you need, for any occasion</div>
+  <div class="my-auto mx-auto">
+    <img src="../assets/couple.jpg" alt />
+  </div>
 </div>
 </template>
 
 <script>
+
   export default {
-    
+    name: "About"
   }
 </script>
 

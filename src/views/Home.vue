@@ -6,8 +6,9 @@
     </div>
   </div>
   <div class="w-33%" :style="`background-image:url(${diamond2}) `">
-    <h10>View our products</h10>
   </div>
+    <h1 class="my-4">Sign up to request a quote today!</h1>
+    <router-link class="ml-16 bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" to="/login">Sign up</router-link>
 </div>
 </template>
 
@@ -40,7 +41,7 @@ export default {
   justify-content: center;
   display: flex;
   margin: auto;
-  margin-top: 60px;
+ // margin-top: 60px;
   background-size: 100%;
   height: 500px;
   width: 100%;

@@ -4,8 +4,8 @@
         <div class="stones">
         <h3 class="text-2xl text-center">Stones</h3>
         <ul id="stonesList">
-            <li v-for="(stones, index) in stonesList" :key="index"
-            @click="moveToChosen(stones, index)"
+            <li v-for="(stone, index) in stonesList" :key="index"
+            @click="moveToChosen(stone, index)"
             class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer hover:bg-yellow-500">
             {{stones}}
             </li>
@@ -42,9 +42,9 @@
     <div class="chosen" v-if="totalChosen>0">
         <h3 class="text-2xl text-center">Chosen options:</h3>
         <ul id="chosenList">
-            <li v-for="(chosen, index) in chosenList" :key="index"
+            <li v-for="(chose, index) in chosenList" :key="index"
             class="text-center p-3 bg-white mt-4 rounded shadow-lg cursor-pointer">
-            {{chosen}}
+            {{chose}}
             </li>
         </ul>
     </div>
