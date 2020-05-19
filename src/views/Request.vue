@@ -42,19 +42,23 @@
         </ul>
     </div>
     <div style="padding-top:20px; text-align:center">
-        <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="$router.go(0)" v-on:click="say('Your request has been submitted!')">Submit</button>
+        <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="$router.go(0)" v-on:click="addRequest; say('Your request has been submitted!')">Submit</button>
         <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="$router.go(0)">Start Over</button>
     </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import { db } from "../plugins/firebase";
+
     export default {
         name: "Request",
         data() {
             return {
                 option: "",
                 stones: "",
+                newRequest: "",
                 chosenList: [],
                 stonesList: [
                 "Diamond",
@@ -93,6 +97,12 @@
             totalCuts() {
               return this.cutList.length;
             },
+            ...mapGetters({
+                user: "getUser"
+            })
+        },
+        mounted () {
+            this.bind();
         },
         methods: {
             moveToChosen(stones, index) {
@@ -109,6 +119,19 @@
             },
             say: function (message) {
               alert(message)
+            },
+            async addRequest() {
+                if (this.newRequest != "") {
+                    await db.collection("chosenList").addRequest({
+                        name: this.chosenList,
+                    })
+                    this.newRequest = "";
+                }
+              //  this.newRequest != "" ? this.chosenList.push({id:this.chosenList.length+1, name: this.user.displayname}) : null
+            },
+            async bind() {
+                await this.$bind( "chosenList", db.collection("chosenList"))
+
             }
         }
 }
