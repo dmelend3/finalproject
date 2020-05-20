@@ -5,6 +5,7 @@ import About from "../views/About.vue";
 import Login from "../views/Login.vue";
 import Stores from "../views/Stores.vue";
 import Request from "../views/Request.vue";
+import RequestCheck from "../views/RequestCheck.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/request",
     name: "Request",
     component: Request
+  },
+  {
+    path: "/requestcheck",
+    name: "RequestCheck",
+    component: RequestCheck
   }
 ];
 const router = new VueRouter({

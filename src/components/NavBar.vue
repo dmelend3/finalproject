@@ -12,6 +12,9 @@
       <router-link v-if="user" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-'#FBC02D' mr-4" to="/request">
         Request a quote
       </router-link>
+      <router-link v-if="user" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-'#FBC02D' mr-4" to="/requestcheck">
+        Check your request
+      </router-link>
       <router-link class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green mr-4" to="/about">
         About
       </router-link>

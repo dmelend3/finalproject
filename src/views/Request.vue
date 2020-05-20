@@ -119,7 +119,6 @@ import { db } from "../plugins/firebase";
             },
             async addRequest() {
                 if (this.chosenList != "") {
-
                     await db.collection("requests").add({user:this.user, options:{...this.chosenList}, status:'pending'})
                     this.chosenList = "";
                 }
