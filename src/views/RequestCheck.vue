@@ -13,9 +13,10 @@
                     <v-subheader>
                 Order Status:
                     </v-subheader>
-                    <v-list-item v-for="requests in users" :key="requests.id" :to="`requests/${requests.email}`">
+                    <v-list-item v-for="requests in users" :key="requests.email" :to="`requests/${requests.email}`">
                     <v-list-item-content>
-                        <v-list-item-title v-text="requests.status"></v-list-item-title>
+                        <v-list-item-title v-text="requests.status">
+                        </v-list-item-title>
                     </v-list-item-content>
                     </v-list-item>
                 </v-list>
@@ -51,6 +52,10 @@ import { db } from "../plugins/firebase";
             }
         },
     }
+    /* let usersRef = db.collection('requests');
+
+    let queryRef = usersRef.where("email", "==", this.user.email) */
+
 </script>
 
 <style lang="scss" scoped>
