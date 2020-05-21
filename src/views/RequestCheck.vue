@@ -1,63 +1,65 @@
 <template>
-<div>
+  <div>
     <div class="flex justify-center items-center">
-        <h4 class="text-4xl mt-24" :style="{fontFamily: 'Tangerine'}">Already sent a request? Sign in and check the status of your request here.</h4>
+      <h4 class="text-4xl mt-24" :style="{ fontFamily: 'Tangerine' }">
+        Already sent a request? Sign in and check the status of your request
+        here.
+      </h4>
     </div>
-        <v-card>
-            <v-card-title>
-                <div>Requested by:</div>
-                <p>{{ user.displayName }}</p>
-            </v-card-title>
-            <v-card-text>
-                <v-list>
-                    <v-subheader>
-                Order Status:
-                    </v-subheader>
-                    <v-list-item v-for="requests in users" :key="requests.email" :to="`requests/${requests.email}`">
-                    <v-list-item-content>
-                        <v-list-item-title v-text="requests.status">
-                        </v-list-item-title>
-                    </v-list-item-content>
-                    </v-list-item>
-                </v-list>
-            </v-card-text>
-        </v-card>
-</div>
+    <div class="flex">
+      <v-card>
+        <v-card-title class="flex justify-center">
+          <div>Requested by: {{ user.displayName }}</div>
+        </v-card-title>
+        <v-card-text v-for="requests in userobj" :key="requests.user.email">
+          <v-list class="flex justify-center">
+            <v-subheader class="orders"
+              >Order Status: {{ requests.status }}</v-subheader
+            >
+            <v-subheader class="orders"
+              >Options: {{ requests.options }}</v-subheader
+            >
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card-text>
+      </v-card>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import { db } from "../plugins/firebase";
 
-    export default {
-        name: "RequestCheck",
-        data() {
-            return {
-                request: "",
-                users: []
-            }
-        },
-        computed: {
-            ...mapGetters({
-                user: "getUser"
-            })
-        },
-        mounted()
-        {
-            this.bind()
-        },
-        methods: {
-            async bind() {
-                await this.$bind("users", db.collection("requests"))
-            }
-        },
+export default {
+  name: "RequestCheck",
+  data() {
+    return {
+      request: "",
+      userobj: {}
+    };
+  },
+  computed: {
+    ...mapGetters({
+      user: "getUser"
+    })
+  },
+  mounted() {
+    this.bind();
+  },
+  methods: {
+    async bind() {
+      await this.$bind(
+        "userobj",
+        db.collection("requests").where("user.email", "==", this.user.email)
+      );
     }
-    /* let usersRef = db.collection('requests');
-
-    let queryRef = usersRef.where("email", "==", this.user.email) */
-
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
