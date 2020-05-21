@@ -6,19 +6,15 @@
         here.
       </h4>
     </div>
-    <div class="flex">
+    <div class="mx-auto">
       <v-card>
         <v-card-title class="flex justify-center">
           <div>Requested by: {{ user.displayName }}</div>
         </v-card-title>
         <v-card-text v-for="requests in userobj" :key="requests.user.email">
           <v-list class="flex justify-center">
-            <v-subheader class="orders"
-              >Order Status: {{ requests.status }}</v-subheader
-            >
-            <v-subheader class="orders"
-              >Options: {{ requests.options }}</v-subheader
-            >
+            <v-subheader class="orders pr-2">Order Status: {{ requests.status }}</v-subheader>
+            <v-subheader class="orders mt-48px">Options: {{ requests.options }}</v-subheader>
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title></v-list-item-title>

@@ -9185,6 +9185,11 @@ vuefire@^2.2.2:
   dependencies:
     "@posva/vuefire-core" "^2.3.1"
 
+vuetify@^2.2.29:
+  version "2.2.29"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.29.tgz#77fd26d8d143251445bed69d3fa0e5d418f25fd0"
+  integrity sha512-UI1i8kEdV+s7tNQe2yJJMPlvxGTE8cZfUAXEGV2yO4owHmeybn6p5YzFpJqimoKkfX6ok+zV29+6yIKfkyUDAA==
+
 vuex-persistedstate@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-3.0.1.tgz#6eacc3c416fe8cfe63c40d3ee7b8ed13aac4f04f"
